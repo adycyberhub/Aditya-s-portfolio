@@ -101,7 +101,7 @@ nav ul li a:hover {
     padding: 20px;            /* Added: small gap so text doesn't hit screen edges */
     opacity: 0; 
     animation: fadeInUp 1s ease-out 0.4s forwards;
-}
+}   
 
 .hero-content h3 {
     font-size: 24px;
@@ -187,10 +187,12 @@ nav ul li a:hover {
     }
 
     .hero {
-        flex-direction: column-reverse; /* Put text ABOVE image on mobile */
+        display: flex;
+        /* Change this to 'column' to let the image stay on top */
+        flex-direction: column; 
         text-align: center;
-        padding: 40px 5%;
-        gap: 30px;
+        padding: 60px 5%; /* Increased top padding to clear the nav */
+        gap: 20px;
     }
 
     .hero-content {
@@ -198,7 +200,8 @@ nav ul li a:hover {
     }
 
     .hero-content h1 {
-        font-size: 40px; /* Smaller text for mobile */
+        font-size: 32px; /* Makes 'Programmer' fit on one line on most phones */
+        margin-top: 10px;
     }
 
     .hero-image img {
