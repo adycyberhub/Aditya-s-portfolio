@@ -1,5 +1,5 @@
 const textElement = document.getElementById("typewriter");
-const words = ["Programmer", "Cyber Expert", "Content Creator","Gamer"];
+const words = ["Programmer", "Cyber Expert", "Creator","Entrepreneur"];
 let wordIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
