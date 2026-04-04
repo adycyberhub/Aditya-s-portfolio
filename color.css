@@ -78,19 +78,19 @@ nav ul li a:hover {
 }
 
 .hero-image {
-    position: relative;
-    top: -80px;
     flex: 1;
-    animation: fadeInUp 1s ease-out forwards, float 4s ease-in-out infinite 1s;
+    display: flex;
+    justify-content: center; 
+    align-items: center;      /* Added: vertically centers the image */
+    animation: fadeInUp 1s ease-out forwards;
 }
 
+/* Make sure the image inside doesn't explode in size */
 .hero-image img {
-    width: 200%;
-    max-width: 700px;
-    height:auto;
+    width: 100%;
+    max-width: 500px;         /* Keeps it a reasonable size on laptops */
+    height: auto;
     object-fit: contain;
-    display: block;
-     /*added*/
 }
 
 .hero-content {
@@ -98,11 +98,9 @@ nav ul li a:hover {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-left: 40px;
-    margin-top: -275px;
+    padding: 20px;            /* Added: small gap so text doesn't hit screen edges */
     opacity: 0; 
     animation: fadeInUp 1s ease-out 0.4s forwards;
-  /*ADDED */
 }
 
 .hero-content h3 {
@@ -178,19 +176,36 @@ nav ul li a:hover {
 
 /* Responsive for smaller screens */
 @media (max-width: 992px) {
+    nav {
+        padding: 20px 5%;
+        flex-direction: column; /* Stacks logo and links */
+        gap: 15px;
+    }
+
+    nav ul li {
+        margin: 0 10px; /* Space out links when stacked */
+    }
+
     .hero {
-        flex-direction: column;
+        flex-direction: column-reverse; /* Put text ABOVE image on mobile */
         text-align: center;
+        padding: 40px 5%;
+        gap: 30px;
     }
+
     .hero-content {
-        padding-left: 0;
-        margin-top: 50px;
+        align-items: center; /* Centers your text and buttons */
     }
-    .hero-image::before {
-        width: 300px;
-        height: 300px;
+
+    .hero-content h1 {
+        font-size: 40px; /* Smaller text for mobile */
+    }
+
+    .hero-image img {
+        max-width: 300px; /* Smaller image for mobile */
     }
 }
+
 /* 1. The Fade and Slide Up Effect */
 @keyframes fadeInUp {
     from {
@@ -344,7 +359,6 @@ nav ul li a:hover {
     border-color: #ff0000 !important;
 }
 
-
 @keyframes forwardScan {
     0% {
         left: -100%;
@@ -353,6 +367,5 @@ nav ul li a:hover {
         left: 100%;
     }
 }
-
 
 
