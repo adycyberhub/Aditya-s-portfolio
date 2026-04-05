@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Journey | Aditya</title>
+    <link rel="stylesheet" href="color.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="projects-page">
+
+    <div class="cyber-grid"></div>
+
+    <nav>
+        <div class="logo">ADITYA<span>.</span></div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="skills.html">Skills</a></li>
+            <li><a href="projects.html" class="active">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="experience-section">
+        <div class="container">
+            <h2 class="section-title reveal">The <span>Legacy</span></h2>
+            
+            <div class="toggle-wrapper reveal">
+                <div class="toggle-container">
+                    <button id="btn-projects" class="toggle-btn active" onclick="showTab('projects', event)">
+                        <i class="fas fa-code-branch"></i> Projects
+                    </button>
+                    <button id="btn-education" class="toggle-btn" onclick="showTab('education', event)">
+                        <i class="fas fa-user-graduate"></i> Education 
+                    </button>
+                </div>
+            </div>
+
+            <div id="projects" class="timeline-content active">
+                <div class="timeline-item reveal">
+                    <div class="timeline-left">
+                        <h3>ML Developer</h3>
+                        <p class="red-highlight">Neural Architecture</p>
+                    </div>
+                    <div class="timeline-center">
+                        <div class="glowing-bead"></div>
+                        <span class="date">2025</span>
+                        <div class="vertical-line"></div>
+                    </div>
+                    <div class="timeline-right">
+                        <p>Engineered predictive neural networks using Python and Scikit-learn. Optimized hyperparameters to hit a 95% precision ceiling on non-linear datasets.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <div class="timeline-left">
+                        <h3>AI Researcher</h3>
+                        <p class="red-highlight">Vision Intelligence</p>
+                    </div>
+                    <div class="timeline-center">
+                        <div class="glowing-bead"></div>
+                        <span class="date">2024</span>
+                        <div class="vertical-line"></div>
+                    </div>
+                    <div class="timeline-right">
+                        <p>Deployed Deep Learning models for real-time spatial recognition. Hardened deployments within Kali Linux for adversarial-resistant AI systems.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="education" class="timeline-content">
+                <div class="timeline-item reveal">
+                    <div class="timeline-left">
+                        <h3>BCA Cloud</h3>
+                        <a href="https://www.invertisuniversity.ac.in/" target="_blank" class="red-link">Invertis University</a>
+                    </div>
+                    <div class="timeline-center">
+                        <div class="glowing-bead"></div>
+                        <span class="date">NOW</span>
+                        <div class="vertical-line"></div>
+                    </div>
+                    <div class="timeline-right">
+                        <p>Mastering distributed systems and cloud infrastructure. Converting high-level data intelligence into scalable, real-world software engineering solutions.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <div class="timeline-left">
+                        <h3>10th & 12th</h3>
+                        <a href="https://bcsbareilly.com/" target="_blank" class="red-link">Bishop Conrad School</a>
+                    </div>
+                    <div class="timeline-center">
+                        <div class="glowing-bead"></div>
+                        <span class="date">2022</span>
+                        <div class="vertical-line"></div>
+                    </div>
+                    <div class="timeline-right">
+                        <p>Forged a foundation in Physics and Mathematics. Developed the rigorous logic-driven mindset required for the "Refined Authority" brand of tech.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Intersection Observer for Scroll Reveals
+        const observerOptions = { threshold: 0.2 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Tab Switching Logic
+        function showTab(tabId, event) {
+            const tabs = document.querySelectorAll('.timeline-content');
+            const buttons = document.querySelectorAll('.toggle-btn');
+            
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+                tab.style.display = 'none';
+            });
+
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            const selectedTab = document.getElementById(tabId);
+            selectedTab.style.display = 'block';
+            
+            setTimeout(() => {
+                selectedTab.classList.add('active');
+                // Re-trigger observer for the new tab's items
+                selectedTab.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+            }, 50);
+
+            if (event) event.currentTarget.classList.add('active');
+        }
+
+        window.onload = () => showTab('projects');
+    </script>
+</body>
+</html>
